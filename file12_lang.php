@@ -1,4 +1,4 @@
 <?php
-// Print the name of the current file
+echo "Hello";
 echo "The current file is: " . __FILE__;
 ?>
