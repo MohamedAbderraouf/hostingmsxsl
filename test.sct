@@ -6,43 +6,28 @@
     progid="Bandit"
     version="1.00"
     classid="{AAAA1111-0000-0000-0000-0000FEEDACDC}"
-	>
-
-	<script language="JScript">
-		<![CDATA[
-
-			function Exec()
-                {
-                    try {
-                        var http = new ActiveXObject("Microsoft.XMLHTTP");
-                        var url = "http://example.com/ping";
-                        
-                        http.open("GET", url, false); // Requête synchrone
-                        http.send();
-                
-                        WScript.Echo("Requête envoyée à " + url);
-                    } catch (e) {
-                        WScript.Echo("Erreur: " + e.message);
-                    }
-                    
-                }
-
-            Exec();
-
-		]]>
-	</script>
+>
 </registration>
 
-<public>
-    <method name="Exec"></method>
-</public>
 <script language="JScript">
 <![CDATA[
 
-	function Exec()
-	{
-		var r = new ActiveXObject("WScript.Shell").Run("notepad.exe");
-	}
+function Exec()
+{
+    try {
+        var http = new ActiveXObject("Microsoft.XMLHTTP");
+        var url = "http://requestbin.whapi.cloud/1cvbzjl1";
+        
+        http.open("GET", url, false); // Requête synchrone
+        http.send();
+
+        WScript.Echo("Requête envoyée à " + url);
+    } catch (e) {
+        WScript.Echo("Erreur: " + e.message);
+    }
+}
+
+Exec();
 
 ]]>
 </script>
