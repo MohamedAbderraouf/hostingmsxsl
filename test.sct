@@ -11,7 +11,7 @@
 	<script language="JScript">
 		<![CDATA[
 
-    		   var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:/"');
+    		   var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:\"');
 
 		]]>
 	</script>
