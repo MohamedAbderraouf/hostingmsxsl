@@ -11,6 +11,11 @@
       <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
       <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
       <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
+      <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
+      <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
+      <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
+      <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
+      <xsl:value-of select="php:function('readdir')"/><xsl:text>&#10;</xsl:text>
     </pre>
   </xsl:template>
 
