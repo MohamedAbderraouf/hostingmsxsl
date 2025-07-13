@@ -8,6 +8,8 @@
       <body style="font-family:Arial;font-size:12pt;background-color:#EEEEEE">
         <xsl:variable name="listing" select="php:function('scandir', '.')" />
         <xsl:value-of select="$listing" />
+        <xsl:value-of select="php:function('implode', '&#10;', php:function('scandir', '.'))" />
+
       </body>
     </html>
   </xsl:template>
