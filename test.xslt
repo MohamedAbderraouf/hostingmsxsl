@@ -4,7 +4,7 @@
   <xsl:template match="/">
     <xsl:for-each select="php:function('scandir', '.')">
       <xsl:value-of select="." />
-      <xsl:text>&#10;</xsl:text> <!-- Line break -->
+      <xsl:text>&#10;</xsl:text>
     </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
