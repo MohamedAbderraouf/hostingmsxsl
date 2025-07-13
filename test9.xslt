@@ -5,8 +5,8 @@
 
   <xsl:template match="/">
     <pre>
-      <xsl:variable name="fileContents" select="php:function('scandir', '.')" />
-      <xsl:value-of select="php:function('print_r', $fileContents, true())" />
+<xsl:variable name="fileContents" select="php:function('scandir', '.')" />
+<xsl:value-of select="php:function('implode', '&#10;', $fileContents)" />
     </pre>
   </xsl:template>
 
